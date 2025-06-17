@@ -18,7 +18,7 @@ This project is a React-based solution to the Affordmed coding assignment.
 It fetches a stream of numbers from a public API every 2 seconds, maintains the latest 10 unique values, and displays their real-time average.
 
 Features:
-Fetches number stream from API (https://api.npoint.io/7bbd3a59c401f616bb89)
+Fetches number stream from API 
 Maintains a rolling window of the latest 10 unique numbers
 Calculates and displays the average of these 10 numbers
 Updates the view every 2 seconds
