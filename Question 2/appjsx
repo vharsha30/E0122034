@@ -1,0 +1,25 @@
+import React, { useState } from "react";
+import axios from "axios";
+
+const windowSize = 10;
+
+const AverageCalculator = () => {
+  const [numbers, setNumbers] = useState([]);
+  const [prevState, setPrevState] = useState([]);
+  const [currState, setCurrState] = useState([]);
+  const [average, setAverage] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const fetchNumbers = async (type) => {
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await axios.get(`http://20.244.56.144/evaluation-service/${type}`);
+      const newNumbers = res.data.numbers;
+      const uniqueNumbers = [...new Set([...numbers, ...newNumbers])];
+      const limitedWindow = uniqueNumbers.slice(-windowSize);
+
+      const avg =
+        limitedWindow.reduce((acc, val)
